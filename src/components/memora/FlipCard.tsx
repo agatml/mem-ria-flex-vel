@@ -8,7 +8,7 @@ interface FlipCardProps {
 }
 
 export function FlipCard({ front, back, flipped, onFlip }: FlipCardProps) {
-  const face = "flip-face absolute inset-0 flex flex-col items-center justify-center gap-4 rounded-3xl bg-card p-6 text-center shadow-card sm:p-10";
+  const face = "flip-face absolute inset-0 flex flex-col items-center justify-center gap-4 rounded-3xl border bg-card p-6 text-center shadow-card sm:p-10";
   return (
     <div className="flip-scene w-full">
       <button

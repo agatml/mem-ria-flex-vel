@@ -21,7 +21,7 @@ export function CardList({ cards, onUpdate, onDelete }: CardListProps) {
 
   if (!cards.length) {
     return (
-      <p className="rounded-2xl border border-dashed bg-card p-8 text-center text-muted-foreground">
+      <p className="rounded-2xl border border-dashed border bg-card p-8 text-center text-muted-foreground">
         Nenhum cartão ainda. Crie o primeiro acima!
       </p>
     );
@@ -31,7 +31,7 @@ export function CardList({ cards, onUpdate, onDelete }: CardListProps) {
     <>
       <ul className="space-y-3">
         {cards.map((card) => (
-          <li key={card.id} className="flex items-start gap-3 rounded-2xl bg-card p-4 shadow-card sm:p-5">
+          <li key={card.id} className="flex items-start gap-3 rounded-2xl border bg-card p-4 shadow-card sm:p-5">
             <div className="min-w-0 flex-1 space-y-1">
               <p className="break-words font-semibold">{card.front}</p>
               <p className="break-words text-sm text-muted-foreground">{card.back}</p>
