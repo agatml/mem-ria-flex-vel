@@ -46,7 +46,7 @@ export function ReviewSession({ cards, onGoCreate }: ReviewSessionProps) {
 
   if (!cards.length) {
     return (
-      <div className="mx-auto max-w-md rounded-3xl bg-card p-10 text-center shadow-card">
+      <div className="mx-auto max-w-md rounded-3xl border bg-card p-10 text-center shadow-card">
         <h2 className="text-xl font-bold">Nada para revisar ainda</h2>
         <p className="mt-2 text-muted-foreground">Crie alguns cartões e volte aqui para estudar.</p>
         <Button className="mt-6" onClick={onGoCreate}>
@@ -63,7 +63,7 @@ export function ReviewSession({ cards, onGoCreate }: ReviewSessionProps) {
     const pct = Math.round((correct / values.length) * 100);
     const wrongCards = s.queue.filter((c) => s.results[c.id] === "wrong");
     return (
-      <div className="mx-auto max-w-lg rounded-3xl bg-card p-8 text-center shadow-card sm:p-10">
+      <div className="mx-auto max-w-lg rounded-3xl border bg-card p-8 text-center shadow-card sm:p-10">
         <h2 className="text-2xl font-bold">Sessão concluída!</h2>
         <p className="mt-6 text-6xl font-extrabold text-primary">{pct}%</p>
         <p className="text-sm text-muted-foreground">de acerto</p>

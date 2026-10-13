@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Toaster } from "@/components/ui/sonner";
+import { ThemeToggle } from "@/components/memora/ThemeToggle";
 import { CardForm } from "@/components/memora/CardForm";
 import { CardList } from "@/components/memora/CardList";
 import { ReviewSession } from "@/components/memora/ReviewSession";
@@ -31,10 +32,11 @@ function Index() {
   return (
     <div className="min-h-screen font-sans">
       <header className="sticky top-0 z-10 border-b bg-background/85 backdrop-blur">
-        <div className="mx-auto flex max-w-3xl items-center justify-between gap-3 px-4 py-3">
+        <div className="mx-auto flex max-w-3xl items-center justify-between gap-2 px-4 py-3">
           <h1 className="text-xl font-extrabold tracking-tight">
             <span className="text-primary">M</span>emora
           </h1>
+          <div className="flex items-center gap-2">
           <nav className="flex rounded-full bg-muted p-1" role="tablist">
             {tabs.map((t) => (
               <button
@@ -54,13 +56,15 @@ function Index() {
               </button>
             ))}
           </nav>
+          <ThemeToggle />
+          </div>
         </div>
       </header>
 
       <main className="mx-auto max-w-3xl px-4 py-8">
         {!loaded ? null : tab === "cards" ? (
           <div className="space-y-8">
-            <section className="rounded-3xl bg-card p-5 shadow-card sm:p-6">
+            <section className="rounded-3xl border bg-card p-5 shadow-card sm:p-6">
               <h2 className="mb-4 text-lg font-bold">Novo cartão</h2>
               <CardForm idPrefix="new" submitLabel="Adicionar cartão" resetOnSubmit onSubmit={addCard} />
             </section>
