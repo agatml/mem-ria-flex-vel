@@ -1,47 +1,107 @@
-# Memória Flexível
+# Memora — Flashcards de estudo
 
-Crie um app web de flashcards chamado "Memora", em português do Brasil, para estudar com cartões de frente e verso.
+Aplicação web para criar cartões de estudo (frente e verso) e revisá-los de forma rápida, com acompanhamento do resultado a cada sessão. Os dados ficam salvos no próprio navegador.
 
-FUNCIONALIDADES:
-1. CARTÕES: formulário para criar um cartão com "Frente" (pergunta) e "Verso" (resposta), ambos obrigatórios, com mensagem de erro amigável se vazios. Lista dos cartões criados, cada um com botões para editar (abrir um modal de edição) e excluir (com confirmação).
-2. REVISÃO: modo de estudo que mostra um cartão por vez, na ordem embaralhada a cada sessão.
-   - O cartão começa mostrando a frente. Ao clicar nele ou no botão "Virar" (ou apertar a tecla Espaço), vira com uma animação suave e mostra o verso.
-   - Com o verso visível, aparecem dois botões: "Acertei" (verde) e "Errei" (vermelho). Ao clicar, avança para o próximo cartão.
-   - Mostrar o progresso ("Cartão 3 de 10") e uma barra de progresso.
-   - Ao terminar, mostrar um resumo: total de acertos, erros e porcentagem de acerto, com os botões "Revisar tudo de novo" e "Revisar só os que errei" (este desabilitado se não houve erros).
-   - Se não houver cartões, mostrar uma mensagem amigável com um botão que leva à criação.
-3. NAVEGAÇÃO: duas abas ou seções no topo, "Cartões" e "Revisar", com um contador do total de cartões.
-4. PERSISTÊNCIA: salvar os cartões no localStorage para que continuem ao recarregar a página. Tratar erros de leitura/escrita do localStorage sem quebrar o app.
+**🔗 Demo:** `https://smart-card-station.lovable.app/`
 
-DESIGN:
-- Visual limpo e moderno, fundo #F8FAFC, cards brancos com cantos arredondados e sombra leve, texto escuro #0F172A.
-- Cor principal índigo #4F46E5; verde #16A34A para "Acertei" e vermelho #DC2626 para "Errei".
-- O cartão de revisão deve ser grande, centralizado e com texto legível.
-- Totalmente responsivo, funcionando bem no celular.
-- Cursor de mãozinha em tudo que for clicável.
+> Projeto pessoal, construído de forma incremental com **Lovable**, em versões pequenas que evoluem a cada etapa.
 
-REGRAS:
-- Não use backend, banco de dados nem login.
-- Não crie decks, busca, modo escuro, estatísticas históricas nem outras funcionalidades além das descritas.
-- Mantenha o código organizado em componentes separados e reutilizáveis, com os tipos TypeScript bem definidos.
+---
 
-This project was built with [Lovable](https://lovable.dev).
+## 📌 Roadmap
 
-## Build with Lovable
+| Versão | O que entra | Situação |
+|---|---|---|
+| **v1** | Criar, editar e excluir cartões; modo de revisão com "Acertei/Errei"; resumo da sessão; dados no `localStorage` | ✅ Concluída |
+| **v1.1** | Paleta em tons de verde e alternância entre tema claro e escuro | ✅ Concluída |
+| **v2** | Decks por assunto, busca e embaralhar | ⏳ Planejada |
+| **v3** | Revisão espaçada simples: cartões errados voltam antes | ⏳ Planejada |
+| **v4** | Estatísticas e gráficos de progresso | ⏳ Planejada |
+| **v5** | Login e banco de dados, para estudar em qualquer aparelho | ⏳ Planejada |
+| **v6** | Importar e exportar decks (CSV) | ⏳ Planejada |
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/c2898e65-423a-4685-bec8-75fc546e2866).
+---
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+## ✨ Funcionalidades
 
-## Development
+**Cartões**
+- Criar cartões com frente (pergunta) e verso (resposta), com validação de campos vazios
+- Editar (em modal) e excluir (com confirmação)
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+**Revisão**
+- Um cartão por vez, em ordem embaralhada a cada sessão
+- Virar o cartão por clique, botão "Virar" ou tecla **Espaço**, com animação
+- Registro de **Acertei** e **Errei**, com contador ("Cartão 3 de 10") e barra de progresso
+- Resumo final com acertos, erros e porcentagem
+- Opção de revisar tudo de novo ou **apenas os cartões errados**
 
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+**Interface**
+- Paleta em tons de verde
+- Tema claro e escuro, com preferência do sistema na primeira visita e escolha salva
+- Layout responsivo (desktop e celular)
+- Mensagens amigáveis quando não há cartões
+
+**Persistência**
+- Cartões salvos no `localStorage`, com tratamento de erros de leitura e escrita
+
+> ℹ️ Os dados ficam apenas no navegador usado: limpar os dados do site ou trocar de aparelho apaga ou separa os cartões. O login e o banco de dados estão previstos para a v5.
+
+
+
+## 🛠️ Tecnologias
+
+- **Lovable** — geração e iteração da aplicação por prompts
+- **React + TypeScript + Tailwind CSS** — stack gerada pelo Lovable 
+- **localStorage** — persistência dos dados no navegador
+- **GitHub** — controle de versão
+
+## ▶️ Como rodar localmente
+
+```bash
+git clone https://github.com/agatml/mem-ria-flex-vel.git
+cd mem-ria-flex-vel
+npm install
 npm run dev
 ```
+
+---
+
+## 🧠 Processo de desenvolvimento
+
+Construído em ciclos de **prompt → teste → correção**, com registro de cada etapa.
+
+| Nº | Prompt (resumo) | Resultado | Problema encontrado | Correção | Créditos |
+|---|---|---|---|---|---|
+| 1 | v1 completa: cartões, modo de revisão, resumo da sessão, persistência local e design responsivo | Funcionou | — | — | 2,10 |
+| 2 | Paleta em tons de verde e alternância de tema claro/escuro, com tema aplicado antes da renderização e variáveis de cor | Implementado | — | — | 2 |
+
+### Boas práticas adotadas
+
+- **Escopo pequeno por versão:** cada etapa entrega algo usável, e as funcionalidades futuras ficam explicitamente fora do prompt.
+- **Sem backend na v1:** o `localStorage` mantém o custo baixo e deixa o banco de dados para quando o app já valer a pena.
+- **Funcionalidades numeradas, com o comportamento de cada botão descrito**, o que reduz retrabalho.
+- **Tipos TypeScript e componentes separados**, facilitando trocar o `localStorage` por um banco de dados na v5.
+- **Cores em hexadecimal e variáveis de tema**, evitando cores fixas espalhadas pelos componentes.
+- **Acessibilidade:** `aria-label` nos botões de ícone, atalho de teclado e distinção de "Acertei/Errei" também por ícone, e não só por cor.
+
+### Aprendizados
+
+- Um prompt com comportamento detalhado de cada ação gera resultado melhor na primeira tentativa.
+- Mudanças visuais amplas (paleta e tema) tocam muitos arquivos; usar variáveis de cor ajuda a manter o custo previsível.
+- Aplicar o tema antes da renderização evita o "flash" de cor errada no carregamento.
+
+---
+
+## 🗺️ Próximos passos
+
+- [ ] v2: decks por assunto, busca e embaralhar
+- [ ] v3: revisão espaçada
+- [ ] v4: estatísticas e gráficos
+- [ ] v5: login e banco de dados
+- [ ] v6: importar e exportar CSV
+
+---
+
+## 📄 Licença
+
+Projeto pessoal, sem fins comerciais.
