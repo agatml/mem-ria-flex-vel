@@ -26,7 +26,11 @@ export function ReviewSession({ cards, onGoCreate }: ReviewSessionProps) {
 
   const flip = useCallback(() => setS((p) => ({ ...p, flipped: !p.flipped })), []);
   const answer = (r: ReviewResult) =>
-    setS((p) => ({ ...p, results: { ...p.results, [p.queue[p.index].id]: r }, index: p.index + 1, flipped: false }));
+    setS((p) => {
+      const card = p.queue[p.index];
+      if (!card) return p;
+      return { ...p, results: { ...p.results, [card.id]: r }, index: p.index + 1, flipped: false };
+    });
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {

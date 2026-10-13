@@ -14,7 +14,7 @@ const STORAGE_KEY = "memora:cards";
 function isFlashcard(v: unknown): v is Flashcard {
   if (!v || typeof v !== "object") return false;
   const c = v as Record<string, unknown>;
-  return typeof c.id === "string" && typeof c.front === "string" && typeof c.back === "string";
+  return typeof c["id"] === "string" && typeof c["front"] === "string" && typeof c["back"] === "string";
 }
 
 export function loadCards(): Flashcard[] {
@@ -49,7 +49,9 @@ export function shuffle<T>(items: T[]): T[] {
   const a = [...items];
   for (let i = a.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
+    const tmp = a[i] as T;
+    a[i] = a[j] as T;
+    a[j] = tmp;
   }
   return a;
 }
